@@ -32,7 +32,7 @@ CXX = c++
 #   -std=c++11 pour C++11
 # Exemple: CXXFLAGS= -std=c++11 -Wall -O -I/usr/local/qt/include
 #
-CXXFLAGS = -std=c++11 -Wall -g -Iheaders -Iheaders/Photo -Iheaders/Video
+CXXFLAGS = -std=c++11 -Wall -g $(shell find headers -type d -exec echo -I{} \;)
 
 #
 # Options de l'editeur de liens
