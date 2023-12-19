@@ -1,0 +1,3 @@
+Multimedia.o: source/Multimedia.cpp headers/Multimedia.h
+main.o: source/main.cpp headers/Photo/Photo.h headers/Multimedia.h \
+  headers/Video/Video.h
