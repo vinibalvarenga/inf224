@@ -104,7 +104,6 @@ void testGroup() {
 
     cout << "Group3:" << endl;
     group3.display(cout);
-
 }
 
 std::string get_working_path()
