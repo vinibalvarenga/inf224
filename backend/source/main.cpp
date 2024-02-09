@@ -5,10 +5,13 @@
 #include "Photo.h"
 #include "Video.h"
 #include "Film.h"
+#include "Group.h"
+
 using namespace std;
 
 void testMultimedia();
 void testFilm();
+void testGroup();
 std::string get_working_path();
 
 const std::string PATH = get_working_path() + "/";
@@ -17,8 +20,9 @@ int main(int argc, const char* argv[])
 {
     
 
-    // testMultimedia(); 
-    testFilm();
+   // testMultimedia(); 
+    // testFilm();
+    testGroup();
 
     return 0;
 }
@@ -67,6 +71,43 @@ void testFilm() {
      for (int i = 0; i < NUM_ITEMS; i++) {
         delete film_items[i];
     }
+}
+
+void testGroup() {
+    // Criar objetos
+    Photo* photo1 = new Photo("Photo1", PATH + "photos/drosil.jp", 100, 200);
+    Video* video1 = new Video("Video1", PATH + "videos/video1.mp4", 120);
+    Film* film1 = new Film("Film1", PATH + "videos/video2.mp4", 180, 0, nullptr);
+
+    // Criar grupos
+    Group group1("Group1");
+    Group group2("Group2");
+    Group group3("Group3");
+
+    // Adicionar objetos aos grupos
+    group1.push_back(photo1);
+    group1.push_back(video1);
+
+    group2.push_back(video1);
+    group2.push_back(film1);
+
+    group3.push_back(photo1);
+    group3.push_back(film1);
+
+    // Exibir grupos
+    cout << "Group1:" << endl;
+    group1.display(cout);
+
+    cout << "Group2:" << endl;
+    group2.display(cout);
+
+    cout << "Group3:" << endl;
+    group3.display(cout);
+
+    // Limpar a memória
+    delete photo1;
+    delete video1;
+    delete film1;
 }
 
 std::string get_working_path()
