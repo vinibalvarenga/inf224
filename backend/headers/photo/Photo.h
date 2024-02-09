@@ -11,7 +11,7 @@ private:
     double longitude;
 
 public:
-    Photo(const std::string& objectName, const std::string& filePath, double latitude, double longitude)
+    Photo(std::string objectName, std::string filePath, double latitude, double longitude)
         : Multimedia(objectName, filePath), latitude(latitude), longitude(longitude) {}
 
     double getLatitude() const { return latitude; }

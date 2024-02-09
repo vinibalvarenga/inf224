@@ -10,7 +10,7 @@ private:
     int duration;
 
 public:
-    Video(const std::string& objectName, const std::string& filePath, int duration)
+    Video(std::string objectName, std::string filePath, int duration)
         : Multimedia(objectName, filePath), duration(duration) {}
 
     int getDuration() const { return duration; }
