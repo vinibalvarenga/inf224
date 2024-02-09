@@ -13,6 +13,10 @@ public:
     Video(std::string objectName, std::string filePath, int duration)
         : Multimedia(objectName, filePath), duration(duration) {}
 
+     ~Video() {
+        std::cout << "Destrutor de Video chamado para " << Multimedia::getObjectName() << std::endl;
+    }
+
     int getDuration() const { return duration; }
 
     void setDuration(int duration) { this->duration = duration; }

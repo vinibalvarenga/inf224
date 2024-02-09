@@ -3,6 +3,7 @@
 
 #include "Video.h"
 #include <string>
+#include <iostream>
 
 class Film : public Video {
 private:
@@ -33,6 +34,8 @@ public:
 
     ~Film() {
         delete[] this->chaptersDuration;
+        std::cout << "Destrutor de Film chamado para " << getObjectName() << std::endl;
+
     }
 
     int getChapters() const { return chapters; }

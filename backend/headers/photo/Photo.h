@@ -5,6 +5,7 @@
 #include "Multimedia.h"
 #include <string>
 
+
 class Photo : public Multimedia {
 private:
     double latitude;
@@ -13,6 +14,10 @@ private:
 public:
     Photo(std::string objectName, std::string filePath, double latitude, double longitude)
         : Multimedia(objectName, filePath), latitude(latitude), longitude(longitude) {}
+    
+     ~Photo() {
+        std::cout << "Destrutor de Photo chamado para " << Multimedia::getObjectName() << std::endl;
+    }
 
     double getLatitude() const { return latitude; }
     double getLongitude() const { return longitude; }
