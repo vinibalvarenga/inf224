@@ -3,10 +3,10 @@
 #include <string>
 #include <memory>
 
-#include "Photo.h"
-#include "Video.h"
-#include "Film.h"
-#include "Group.h"
+
+#include "Manager.h"
+#include "tcpserver.h"
+#include "handle_request.h"
 
 using namespace std;
 
@@ -16,18 +16,43 @@ void testGroup();
 std::string get_working_path();
 
 const std::string PATH = get_working_path() + "/";
+const int PORT = 3331;
 
 int main(int argc, const char* argv[])
 {
-    
+    Manager* manager =  new Manager();
 
-   // testMultimedia(); 
-    // testFilm();
-    testGroup();
+    // Create multimedia objects
+    manager->createPhoto("Photo1", PATH + "photos/drosil.jpg", 40, 74);
+    manager->createVideo("Video1", PATH + "videos/video1.mp4", 120);
+    manager->createFilm("Film1", PATH + "videos/video1.mp4", 150, 5, new int[5]{10, 20, 30, 40, 50});
+    manager->createGroup("Group1");
+    manager->createGroup("Group2");
+
+    // Create server
+    auto* server = new TCPServer([&](std::string const& request, std::string& response) {
+        std::cout << "request: " << request << std::endl;
+
+        // process the request
+        response = handle_request(request, manager);
+
+        return true;
+    });
+
+    // Run server
+    std::cout << "Starting Server on port " << PORT << std::endl;
+    int status = server->run(PORT);
+
+    // en cas d'erreur
+    if (status < 0) {
+        std::cerr << "Could not start Server on port " << PORT << std::endl;
+        return 1;
+    }
 
     return 0;
 }
 
+/*
 void testMultimedia() {
     const int NUM_MULTIMEDIA_ITEMS = 4;
     Multimedia* multimedia_items[NUM_MULTIMEDIA_ITEMS];
@@ -105,7 +130,7 @@ void testGroup() {
     cout << "Group3:" << endl;
     group3.display(cout);
 }
-
+*/
 std::string get_working_path()
 {
    char temp[1024];

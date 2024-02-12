@@ -34,15 +34,18 @@ public:
     GroupPtr createGroup(std::string name);
 
     // Displays
-    void displayMultimedia(std::string objectName) const;
-    void displayGroup(std::string name) const;
+    bool displayGroup(std::string name, std::ostream& os) const;
+    bool displayMultimedia(std::string objectName, std::ostream& os) const;
+
+    // adds
+    bool addMediaToGroup(std::string mediaName, std::string groupName);
 
     // Plays
-    void playMultimedia(std::string objectName) const;
+    bool playMultimedia(std::string objectName) const;
 
     // Deletes
-    void deleteMultimedia(std::string objectName);
-    void deleteGroup(std::string name);
+    bool deleteMultimedia(std::string objectName);
+    bool deleteGroup(std::string name);
 };
 
 

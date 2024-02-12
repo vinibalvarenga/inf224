@@ -14,7 +14,7 @@ PROG = myprog
 #
 # Fichiers sources (NE PAS METTRE les .h ni les .o seulement les .cpp)
 #
-SOURCES = source/Multimedia.cpp source/main.cpp
+SOURCES = source/multimedia.cpp source/main.cpp source/manager.cpp source/handle_request.cpp source/tcpserver.cpp source/ccsocket.cpp
 
 #
 # Fichiers objets (ne pas modifier sauf si l'extension n'est pas .cpp)
@@ -37,7 +37,7 @@ CXXFLAGS = -std=c++11 -Wall -g $(shell find headers -type d -exec echo -I{} \;)
 #
 # Options de l'editeur de liens
 #
-LDFLAGS = 
+LDFLAGS = -lpthread
 
 #
 # Librairies a utiliser
