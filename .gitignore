@@ -1,3 +1,4 @@
 myprog
 depend-myprog
 *.o
+*.class
