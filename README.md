@@ -1,19 +1,70 @@
-# TP INF224:
+# MediaManager - Multimedia File Management System
 
-Author: Vinicius Barros Alvarenga
-
-Date: 2024-02-14
-
-Copyright (c) 2024
+**Author:** Vinicius Barros Alvarenga  
+**Date:** 2024-02-14  
+**Course:** INF224 - Télécom ParisTech  
 
 [Link to project's description](https://perso.telecom-paristech.fr/elc/inf224/)
 
-## Important Notes
+## 📋 About the Project
+
+MediaManager is a comprehensive multimedia file management system that allows users to store, organize, and play different types of media (photos, videos, and films) through an intuitive graphical interface. The project implements a robust client-server architecture with TCP/IP communication.
+
+
+### 🎯 Key Features
+
+- **Media Management**: Create, view, play, and delete multimedia files
+- **Supported Media Types**:
+  - 📸 **Photos**: With GPS coordinates (latitude/longitude)
+  - 🎬 **Videos**: With custom duration
+  - 🎭 **Films**: With chapters and duration per chapter
+- **Group System**: Organization of media into custom groups
+- **Graphical Interface**: Java Swing client with menus and toolbars
+- **C++ Server**: Robust backend with simultaneous multi-client management
+
+### 🏗️ Architecture
+
+```
+┌─────────────────┐    TCP/IP     ┌─────────────────┐
+│   Java Client   │◄──────────────►│   C++ Server    │
+│   (Interface)   │   Port 3331   │   (Backend)     │
+└─────────────────┘               └─────────────────┘
+```
+
+- **Frontend**: Java Swing with rich graphical interface
+- **Backend**: C++ with memory management and polymorphism
+- **Communication**: TCP/IP sockets for client-server communication
+- **Concurrency**: Multi-client support with threads
+
+### 🚀 Technologies Used
+
+- **C++11**: Object-oriented programming, smart pointers, polymorphism
+- **Java Swing**: Rich and responsive graphical interface  
+- **TCP/IP Sockets**: Robust network communication
+- **Threading**: Concurrent request processing
+- **Makefile**: Automated build system
+
+
+## 🔧 How to Run
+
+### Prerequisites
+- C++ compiler with C++11 support
+- Java Development Kit (JDK)
+- Make
+
 
 ### Execution
-To execute the programs, it is necessary to execute the following command in two terminals:
-```make run```
-one terminal for each directory `cpp` and `swing`.
+1. **Terminal 1** - Start the server:
+   ```bash
+   cd cpp/
+   make run
+   ```
+
+2. **Terminal 2** - Start the client:
+   ```bash
+   cd swing/
+   make run
+   ```
 
 ### Requests
 
